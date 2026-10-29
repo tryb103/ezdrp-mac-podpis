@@ -1,0 +1,24 @@
+tools/
+dist/
+naskdesk-2.0.2.71/bin/
+naskdesk-2.0.2.71/*.zip
+naskdesk-2.0.2.71/*.msi
+naskdesk-2.0.2.71/*.exe
+app/target/
+spike/*.pdf
+spike/*.docx
+spike/*.doc
+spike/*.class
+spike/p11info/*.class
+spike/validator/lib/
+spike/validator/target/
+.pin
+DRYRUN
+.DS_Store
+
+# Kod/pliki NASK (nie nasz kod – tylko lokalnie, do interoperacyjności)
+naskdesk-2.0.2.71/
+ezdrp-web-frontend/
+# Rozpakowany dokument z EZD RP (dane osobowe)
+spike/docx-inspect/
+*.class

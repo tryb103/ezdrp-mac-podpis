@@ -1,0 +1,11 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion>
+<groupId>pl.ezdrp</groupId><artifactId>validator-deps</artifactId><version>1</version><packaging>pom</packaging>
+<dependencies>
+ <dependency><groupId>eu.europa.ec.joinup.sd-dss</groupId><artifactId>dss-policy-jaxb</artifactId><version>6.3</version></dependency>
+ <dependency><groupId>eu.europa.ec.joinup.sd-dss</groupId><artifactId>dss-validation</artifactId><version>6.3</version></dependency>
+ <dependency><groupId>eu.europa.ec.joinup.sd-dss</groupId><artifactId>dss-pades-pdfbox</artifactId><version>6.3</version></dependency>
+ <dependency><groupId>eu.europa.ec.joinup.sd-dss</groupId><artifactId>dss-cms-object</artifactId><version>6.3</version></dependency>
+ <dependency><groupId>eu.europa.ec.joinup.sd-dss</groupId><artifactId>dss-utils-apache-commons</artifactId><version>6.3</version></dependency>
+ <dependency><groupId>eu.europa.ec.joinup.sd-dss</groupId><artifactId>dss-crl-parser-stream</artifactId><version>6.3</version></dependency>
+ <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-simple</artifactId><version>2.0.16</version></dependency>
+</dependencies></project>
