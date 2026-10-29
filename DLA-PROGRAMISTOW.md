@@ -130,3 +130,19 @@ Pakiet jest podpisany ad hoc (bez konta Apple Developer), więc Gatekeeper bloku
 `install.sh` zdejmuje flagę kwarantanny (`xattr -dr com.apple.quarantine`). Dla dystrybucji w instytucji bez tego
 kroku potrzebny jest certyfikat Developer ID i notaryzacja (`codesign --sign "Developer ID Application: …"`,
 `xcrun notarytool submit` – wymaga Xcode CLT) albo wdrożenie przez MDM.
+
+## 8. Licencje
+
+Kod projektu: © 2026 Mateusz Trybowski, wszelkie prawa zastrzeżone (`LICENSE`). Komponenty użyte w pakiecie aplikacji:
+
+| Komponent | Licencja | Uwagi |
+|---|---|---|
+| EU DSS (Digital Signature Service) 6.3 | LGPL-2.1 | biblioteki `.jar` ładowane bez modyfikacji |
+| Apache PDFBox, Apache Commons, HttpClient | Apache-2.0 | |
+| Bouncy Castle | MIT | |
+| Eclipse Temurin JDK 21 (wbudowane środowisko) | GPL-2.0 + Classpath Exception | |
+| SLF4J | MIT | |
+
+Instalowane osobno przez `install.sh`: Szafir 2.0 (KIR, licencja właścicielska – pobierany ze strony KIR
+przez użytkownika), LibreOffice (MPL-2.0). Protokół NASK Desk odtworzono w celu interoperacyjności
+(art. 75 ust. 2 pkt 3 ustawy o prawie autorskim), za zgodą NASK; zdekompilowany kod nie jest częścią repozytorium.

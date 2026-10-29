@@ -22,8 +22,10 @@ REPO="tryb103/ezdrp-mac-podpis"
 APP_NAME="EZD RP Podpis.app"
 APP_DEST="$HOME/Applications/$APP_NAME"
 SZAFIR_LIB="/Applications/Szafir2.app/Contents/app/libPKCS11Graphite.dylib"
-# Oficjalna strona KIR z aplikacjami: https://www.elektronicznypodpis.pl/en/applications-and-drivers
-SZAFIR_PKG_URL="${SZAFIR_PKG_URL:-https://www.elektronicznypodpis.pl/storage/file/core_files/2026/1/14/8fbddaefe0f0ee566625cd052a50e3a0/Szafir2-703.pkg}"
+# Oficjalna strona KIR z aplikacjami (instalator odczytuje z niej aktualny adres pakietu „Szafir (macOS)”;
+# gdy to się nie uda, używa ostatniego znanego adresu poniżej).
+KIR_PAGE="https://www.elektronicznypodpis.pl/en/applications-and-drivers"
+SZAFIR_PKG_FALLBACK="https://www.elektronicznypodpis.pl/storage/file/core_files/2026/1/14/8fbddaefe0f0ee566625cd052a50e3a0/Szafir2-703.pkg"
 LO_BASE="https://download.documentfoundation.org/libreoffice/stable"
 LS=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
 
@@ -33,7 +35,15 @@ for a in "$@"; do
     --sprawdz|--check) TYLKO_SPRAWDZ=1 ;;
     --bez-libreoffice) BEZ_LO=1 ;;
     --odinstaluj|--uninstall) ODINSTALUJ=1 ;;
-    -h|--help) sed -n '2,17p' "$0" 2>/dev/null; exit 0 ;;
+    -h|--help) cat <<'POMOC'
+EZD RP Podpis – instalator dla macOS (Apple Silicon)
+  bez opcji            instaluje Szafir 2.0 (KIR), LibreOffice i EZD RP Podpis.app
+  --sprawdz            tylko sprawdza stan instalacji, nic nie zmienia
+  --bez-libreoffice    nie instaluje LibreOffice (podpis tylko plików PDF)
+  --odinstaluj         usuwa EZD RP Podpis.app (Szafir i LibreOffice zostają)
+Instrukcja: https://github.com/tryb103/ezdrp-mac-podpis#readme
+POMOC
+      exit 0 ;;
     *) echo "Nieznana opcja: $a (dostępne: --sprawdz, --bez-libreoffice, --odinstaluj)"; exit 2 ;;
   esac
 done
@@ -91,7 +101,9 @@ krok "1/3 Szafir 2.0 (KIR) – sterownik karty"
 if [[ -f "$SZAFIR_LIB" ]]; then
   ok "Szafir 2.0 już zainstalowany"
 else
-  info "Pobieram pakiet Szafir 2.0 ze strony KIR (ok. 100 MB)..."
+  SZAFIR_PKG_URL="${SZAFIR_PKG_URL:-$(curl -fsSL -m 30 "$KIR_PAGE" 2>/dev/null | grep -o 'https://www.elektronicznypodpis.pl/storage/file/core_files/[^"]*Szafir2[^"]*\.pkg' | head -1)}"
+  [[ -n "$SZAFIR_PKG_URL" ]] || SZAFIR_PKG_URL="$SZAFIR_PKG_FALLBACK"
+  info "Pobieram pakiet Szafir 2.0 ze strony KIR (ok. 100 MB): ${SZAFIR_PKG_URL##*/}"
   curl -fSL --progress-bar -o "$TMP/Szafir2.pkg" "$SZAFIR_PKG_URL" || blad "Nie udało się pobrać Szafir 2.0. Pobierz ręcznie ze strony https://www.elektronicznypodpis.pl/en/applications-and-drivers (pozycja „Szafir (macOS)”) i zainstaluj, potem uruchom ten instalator ponownie."
   if pkgutil --check-signature "$TMP/Szafir2.pkg" | grep -q -i -E 'Developer ID Installer: KRAJOWA IZBA ROZLICZENIOWA'; then
     ok "Podpis pakietu: $(pkgutil --check-signature "$TMP/Szafir2.pkg" | grep -m1 -o 'Developer ID Installer: [^(]*' )"

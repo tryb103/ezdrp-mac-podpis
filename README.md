@@ -143,3 +143,4 @@ xattr -dr com.apple.quarantine ~/Applications/"EZD RP Podpis.app"
 
 Dla administratorów i programistów (kompilacja ze źródeł, tryb testowy, praca zdalna przez tunel, opis protokołu):
 **`DLA-PROGRAMISTOW.md`** oraz **`PROTOKOL-NASK-DESK.md`**.
+Historia wersji: `CHANGELOG.md`. Licencja: wszelkie prawa zastrzeżone, © 2026 Mateusz Trybowski (`LICENSE`).

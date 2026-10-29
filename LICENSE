@@ -1,0 +1,30 @@
+Copyright (c) 2026 Mateusz Trybowski. Wszelkie prawa zastrzeżone.
+Copyright (c) 2026 Mateusz Trybowski. All rights reserved.
+
+PL
+Oprogramowanie „EZD RP Podpis” (kod źródłowy, skrypty, dokumentacja i grafika w tym repozytorium) jest
+chronione prawem autorskim. Udostępnienie kodu w serwisie GitHub służy wyłącznie jego przeglądaniu.
+Bez pisemnej zgody właściciela praw nie wolno oprogramowania kopiować, modyfikować, rozpowszechniać,
+publikować, udzielać na nie sublicencji ani wykorzystywać w celach komercyjnych, z wyjątkiem uprawnień
+wynikających bezwzględnie z przepisów prawa (w szczególności ustawy z dnia 4 lutego 1994 r. o prawie
+autorskim i prawach pokrewnych).
+
+Oprogramowanie jest dostarczane „takie, jakie jest”, bez jakiejkolwiek gwarancji, wyraźnej ani dorozumianej,
+w tym gwarancji przydatności handlowej lub do określonego celu. Właściciel praw nie ponosi odpowiedzialności
+za jakiekolwiek szkody wynikłe z użycia oprogramowania.
+
+Komponenty osób trzecich zawarte w pakiecie aplikacji (EU DSS, Apache PDFBox, Bouncy Castle, Eclipse Temurin,
+SLF4J i inne) pozostają na własnych licencjach – wykaz w pliku DLA-PROGRAMISTOW.md, sekcja „Licencje”.
+
+EN
+The "EZD RP Podpis" software (source code, scripts, documentation and artwork in this repository) is protected
+by copyright. Publication on GitHub is for viewing only. Without the written permission of the copyright holder
+the software may not be copied, modified, distributed, published, sublicensed or used commercially, except
+to the extent mandated by applicable law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL THE COPYRIGHT HOLDER
+BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THE SOFTWARE.
+
+Third-party components bundled with the application (EU DSS, Apache PDFBox, Bouncy Castle, Eclipse Temurin,
+SLF4J and others) remain under their own licenses – see DLA-PROGRAMISTOW.md, section "Licencje".

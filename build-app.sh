@@ -9,14 +9,14 @@ VERSION="${VERSION:-1.0.0}"
 export JAVA_HOME="$ROOT/tools/jdk/Contents/Home"
 [[ -x "$JAVA_HOME/bin/java" && -x "$ROOT/tools/maven/bin/mvn" ]] || { echo "Brak narzędzi – uruchom najpierw $ROOT/setup-tools.sh" >&2; exit 2; }
 cd "$ROOT/app"
-"$ROOT/tools/maven/bin/mvn" -q -B -DskipTests clean package
+"$ROOT/tools/maven/bin/mvn" -q -B clean package   # z testami jednostkowymi
 
 rm -rf target/pkg-input target/dist
 mkdir -p target/pkg-input target/dist
 cp target/ezdrp-podpis.jar target/pkg-input/
 cp -R target/lib target/pkg-input/lib
 "$JAVA_HOME/bin/jpackage" --type app-image --name "EZD RP Podpis" --app-version "$VERSION" \
-  --vendor "EZD RP Mac" --input target/pkg-input --main-jar ezdrp-podpis.jar \
+  --vendor "Mateusz Trybowski" --copyright "© 2026 Mateusz Trybowski. Wszelkie prawa zastrzeżone." --input target/pkg-input --main-jar ezdrp-podpis.jar \
   --main-class pl.ezdrp.podpis.Main --dest target/dist \
   --mac-package-identifier pl.ezdrp.podpis --mac-package-name "EZD RP Podpis" \
   --java-options "-Dapple.awt.UIElement=true" \
