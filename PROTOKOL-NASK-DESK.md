@@ -43,7 +43,7 @@ ezdrp://{TOKEN}/{BASE64}/{TYP_OPERACJI}
 | 81–88 | wydruki RKW (etykieta, koperta, zwrotka, wkładka, ZPO, numer R…) |
 | 91 | WydrukWEW |
 
-Przykład z logu: `ezdrp://84bee5fd524c49b0bd6680e959c2e5f9/aHR0cHM6Ly9lemRycC1hcGkuc2FhczEuZXpkcnAuZ292LnBs/5`
+Przykład (token fikcyjny): `ezdrp://0123456789abcdef0123456789abcdef/aHR0cHM6Ly9lemRycC1hcGkuc2FhczEuZXpkcnAuZ292LnBs/5`
 → token `84bee5fd…`, API `https://ezdrp-api.saas1.ezdrp.gov.pl`, operacja 5 = podpis.
 
 ## 3. Wspólne elementy każdego żądania do „ICE API” (FileMonitor API)

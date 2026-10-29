@@ -27,6 +27,7 @@ w przeglądarce**. Po kliknięciu „Podpisz” w EZD RP otwiera się okienko na
 
 Instalator sam pobiera i instaluje wszystkie trzy elementy: sterownik karty **Szafir 2.0** ze strony KIR,
 **LibreOffice** (zamienia dokumenty Word na PDF przed podpisem) i aplikację **EZD RP Podpis**.
+Dodatkowo instaluje Rosettę 2 firmy Apple, bez której nie uruchomi się program Szafir (sam podpis jej nie potrzebuje).
 
 **Krok 1.** Podłącz czytnik z kartą do Maca.
 
@@ -103,6 +104,7 @@ open ~/Library/Logs/"EZD RP Podpis"
 | Okno błędu: „Nie znaleziono na karcie certyfikatu o numerze seryjnym …” | Profil podpisu w EZD RP wskazuje inny certyfikat niż ten na włożonej karcie. W EZD RP: Ustawienia użytkownika → Podpisy → wybierz certyfikat z karty. Sprawdź też, czy włożona jest właściwa karta. |
 | Okno błędu: „Nieprawidłowy PIN” | Wpisz PIN jeszcze raz. Uwaga: trzy błędne próby blokują kartę. |
 | Okno błędu: „PIN karty jest zablokowany” | Odblokuj PIN w aplikacji Szafir 2.0 (`/Applications/Szafir2.app`) kodem PUK od KIR. |
+| Program Szafir 2.0 nie uruchamia się („nie można otworzyć”, brak Rosetty) | Szafir 2.0 jest zbudowany dla procesorów Intel. Zainstaluj Rosettę w Terminalu: `sudo softwareupdate --install-rosetta --agree-to-license` (instalator robi to sam). EZD RP Podpis działa bez niej. |
 | Okno błędu: „EZD RP żąda podpisu XAdES…” | Ta wersja podpisuje tylko PAdES. W EZD RP ustaw typ podpisu „Podpis domyślny (PAdES)”. |
 | Okno błędu: „Podpis PAdES wymaga PDF. Otrzymano format …” | Podpisywane mogą być pliki PDF, DOCX i DOC. Inne formaty nie są obsługiwane. |
 | Okno błędu: „…nie znaleziono LibreOffice…” | Dokument jest w formacie Word, a LibreOffice nie jest zainstalowany. Uruchom instalator bez `--bez-libreoffice`. |

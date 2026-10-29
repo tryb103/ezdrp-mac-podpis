@@ -14,4 +14,6 @@ Pierwsza wersja produkcyjna (działa od 2026-10-21).
   strumieniowy jako zapas.
 - Instalator `install.sh` (Szafir 2.0 ze strony KIR z weryfikacją podpisu pakietu, LibreOffice z weryfikacją
   SHA-256, aplikacja z GitHub Releases z weryfikacją SHA-256), skrypty `setup-tools.sh` i `build-app.sh`.
+- Instalator doinstalowuje Rosettę 2 (program Szafir 2.0 jest zbudowany dla Intela; sam podpis jej nie wymaga).
+- 12 testów jednostkowych (JUnit 5) uruchamianych przy każdej kompilacji.
 - Dokumentacja: `README.md` (użytkownik), `DLA-PROGRAMISTOW.md`, `PROTOKOL-NASK-DESK.md`.

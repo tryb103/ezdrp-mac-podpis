@@ -115,6 +115,16 @@ else
   [[ -f "$SZAFIR_LIB" ]] && ok "Szafir 2.0 zainstalowany w /Applications/Szafir2.app" || blad "Po instalacji nie znaleziono sterownika $SZAFIR_LIB"
 fi
 
+# Program Szafir 2.0 (okno do sprawdzania karty i odblokowania PIN) jest zbudowany dla procesorów Intel –
+# na Macu z Apple Silicon potrzebuje Rosetty. Sam sterownik karty (biblioteka PKCS#11) jest uniwersalny
+# i EZD RP Podpis działa bez Rosetty, ale instalujemy ją, żeby Szafir też dało się uruchomić.
+if /usr/bin/pgrep -q oahd; then
+  ok "Rosetta 2 (potrzebna tylko do uruchamiania programu Szafir)"
+else
+  info "Instaluję Rosetta 2 (Apple, kilkadziesiąt MB) – potrzebna do uruchamiania programu Szafir..."
+  if sudo softwareupdate --install-rosetta --agree-to-license >/dev/null 2>&1; then ok "Rosetta 2 zainstalowana"; else info "Rosetty nie udało się zainstalować – EZD RP Podpis zadziała, ale okno Szafira nie. Później: sudo softwareupdate --install-rosetta --agree-to-license"; fi
+fi
+
 # ------------------------------------------------------------------ 2. LibreOffice
 krok "2/3 LibreOffice – konwersja dokumentów Word do PDF"
 if [[ $BEZ_LO -eq 1 ]]; then

@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EzdrpLinkTest {
 
-    static final String LINK = "ezdrp://84bee5fd524c49b0bd6680e959c2e5f9/aHR0cHM6Ly9lemRycC1hcGkuc2FhczEuZXpkcnAuZ292LnBs/5";
+    static final String LINK = "ezdrp://0123456789abcdef0123456789abcdef/aHR0cHM6Ly9lemRycC1hcGkuc2FhczEuZXpkcnAuZ292LnBs/5";
 
     @Test
     void parsujeLinkPodpisu() {
         EzdrpLink l = EzdrpLink.parse(LINK);
-        assertEquals("84bee5fd524c49b0bd6680e959c2e5f9", l.token());
+        assertEquals("0123456789abcdef0123456789abcdef", l.token());
         assertEquals("https://ezdrp-api.saas1.ezdrp.gov.pl", l.apiUrl());
         assertNull(l.proxyUrl());
         assertEquals(EzdrpLink.OP_PODPISYWANIE_PLIKOW, l.operation());

@@ -5,7 +5,7 @@ public class FillProbe {
         Log log = new Log(true);
         Path in = Path.of(a[0]);
         int[] n = new int[1];
-        byte[] docx = DocxPlaceholders.fill(Files.readAllBytes(in), DocxPlaceholders.forSigner("Wojciech Trybowski", "Pomorski Wojewódzki Lekarz Weterynarii", "2026-10-21 15:45:00"), n);
+        byte[] docx = DocxPlaceholders.fill(Files.readAllBytes(in), DocxPlaceholders.forSigner("Jan Kowalski", "Dyrektor Wydziału", "2026-10-21 15:45:00"), n);
         System.out.println("replaced=" + n[0]);
         byte[] pdf = new DocxToPdf(log).convert(docx, in.getFileName().toString());
         Path out = in.resolveSibling("filled.pdf");

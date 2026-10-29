@@ -14,7 +14,7 @@ class EzdRpClientTest {
     /** CX = SHA-1 tokenu, każdy bajt jako liczba dziesiętna bez separatora (NASK Desk TokenToSha1Converter). */
     @Test
     void cxToSha1JakoCiagLiczbDziesietnych() throws Exception {
-        String token = "84bee5fd524c49b0bd6680e959c2e5f9";
+        String token = "0123456789abcdef0123456789abcdef";
         // niezależna implementacja: hex SHA-1 -> pary znaków -> liczby dziesiętne
         String hex = HexFormat.of().formatHex(MessageDigest.getInstance("SHA-1").digest(token.getBytes(StandardCharsets.UTF_8)));
         StringBuilder expected = new StringBuilder();
