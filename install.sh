@@ -145,8 +145,10 @@ else
   REL=$(curl -fsSL "${AUTH[@]}" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/$REPO/releases/latest") || blad "Nie udało się połączyć z GitHub. Sprawdź internet albo pobierz plik EZD-RP-Podpis-*-macOS.zip ręcznie z https://github.com/$REPO/releases i uruchom ten skrypt z katalogu, w którym obok jest folder dist/."
   TAG=$(echo "$REL" | grep -o '"tag_name": *"[^"]*"' | head -1 | sed 's/.*: *"//; s/"//')
   if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-    ZIP_URL=$(echo "$REL" | tr ',' '\n' | grep -B3 '"name": *"EZD-RP-Podpis-[^"]*-macOS.zip"' | grep -o '"url": *"https://api.github.com/repos/[^"]*/assets/[0-9]*"' | head -1 | sed 's/.*: *"//; s/"//')
-    SHA_URL=$(echo "$REL" | tr ',' '\n' | grep -B3 '"name": *"EZD-RP-Podpis-[^"]*-macOS.zip.sha256"' | grep -o '"url": *"https://api.github.com/repos/[^"]*/assets/[0-9]*"' | head -1 | sed 's/.*: *"//; s/"//')
+    # Repozytorium prywatne: pobieranie przez API (adres "url" zasobu + Accept: application/octet-stream).
+    REL1=$(echo "$REL" | tr -d '\n')
+    ZIP_URL=$(echo "$REL1" | grep -o '"url": *"https://api.github.com/repos/[^"]*/assets/[0-9]*"[^}]*"name": *"EZD-RP-Podpis-[^"]*-macOS\.zip"' | head -1 | grep -o '"url": *"[^"]*"' | head -1 | sed 's/.*: *"//; s/"//')
+    SHA_URL=$(echo "$REL1" | grep -o '"url": *"https://api.github.com/repos/[^"]*/assets/[0-9]*"[^}]*"name": *"EZD-RP-Podpis-[^"]*-macOS\.zip\.sha256"' | head -1 | grep -o '"url": *"[^"]*"' | head -1 | sed 's/.*: *"//; s/"//')
     ACCEPT=(-H "Accept: application/octet-stream")
   else
     ZIP_URL=$(echo "$REL" | grep -o '"browser_download_url": *"[^"]*EZD-RP-Podpis-[^"]*-macOS.zip"' | head -1 | sed 's/.*: *"//; s/"//')
