@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo-512.png" width="240" alt="EZD RP Podpis – logo projektu">
+</p>
+
 # EZD RP Podpis dla macOS
 
 Podpisywanie dokumentów w **EZD RP** podpisem kwalifikowanym (karta KIR / Szafir) **na Macu, jednym kliknięciem
